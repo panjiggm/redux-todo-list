@@ -14,9 +14,13 @@ class TodoList extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state.todo)
-    this.props.addTodo(this.state.todo)
-    this.setState({ todo: '' })
+
+    if (this.state.todo === '') {
+      window.alert('Please Add todo field !')
+    } else {
+      this.props.addTodo(this.state.todo)
+      this.setState({ todo: '' })
+    }
   }
 
   render() {
@@ -28,7 +32,7 @@ class TodoList extends Component {
             <input
               type="text"
               name="todo"
-              placeholder="First Name"
+              placeholder="Add Todo..."
               value={this.state.todo}
               onChange={this.handleChange}
             />
